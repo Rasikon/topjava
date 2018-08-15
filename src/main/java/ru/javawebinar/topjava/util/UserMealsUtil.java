@@ -43,7 +43,6 @@ public class UserMealsUtil {
                 mealWithExceeds.add(new UserMealWithExceed(meal.getDateTime(), meal.getDescription(), meal.getCalories(), exceed));
             }
         }
-        System.out.println(mealWithExceeds);
         return mealWithExceeds;
     }
 
