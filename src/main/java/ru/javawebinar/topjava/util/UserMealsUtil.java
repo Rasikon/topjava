@@ -48,7 +48,6 @@ public class UserMealsUtil {
 
     public static List<UserMealWithExceed> getFilteredWithExceededStream(List<UserMeal> mealList, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
         Map<LocalDate,Integer> dayCalories = mealList.stream().collect(Collectors.groupingBy(k ->k.getDateTime().toLocalDate(),Collectors.summingInt(UserMeal::getCalories) ));
-        System.out.println(dayCalories);
 
         return  mealList.stream().filter(x-> isBetween(x.getDateTime().toLocalTime(), startTime, endTime))
                 .map(p -> new UserMealWithExceed(p.getDateTime(), p.getDescription(), p.getCalories(), dayCalories.get(p.getDateTime().toLocalDate())>caloriesPerDay))
